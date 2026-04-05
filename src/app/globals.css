@@ -2,25 +2,257 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111111;
+  --gold: #DC143C;
+  --gold-light: #FF2D55;
+  --gold-dark: #A01030;
+  --charcoal: #111111;
+  --charcoal-soft: #1C1C1E;
+  --gray-light: #F8F8F8;
+  --gray-mid: #6B7280;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-soft: var(--charcoal-soft);
+  --color-gray-light: var(--gray-light);
+  --color-gray-mid: var(--gray-mid);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Thin premium scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+/* Selection */
+::selection { background-color: var(--gold); color: #fff; }
+::-moz-selection { background-color: var(--gold); color: #fff; }
+
+/* Focus */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Base transitions — only transition compositable properties */
+button, a {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+input, textarea, select {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Noise/grain texture for dark sections */
+.noise-overlay {
+  position: relative;
+  isolation: isolate;
+}
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+}
+.noise-overlay > * { position: relative; z-index: 1; }
+
+/* Typography utilities */
+.label-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Section heading baseline */
+.section-heading {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+}
+
+/* Premium shadow */
+.shadow-red {
+  box-shadow: 0 8px 32px rgba(220, 20, 60, 0.22);
+}
+.shadow-red-lg {
+  box-shadow: 0 20px 60px rgba(220, 20, 60, 0.28);
+}
+
+/* Hover underline draw */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer loader */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+.shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, transparent 0%, rgba(220, 20, 60, 0.08) 50%, transparent 100%);
+  background-size: 1000px 100%;
+}
+
+/* Scroll dot bounce */
+@keyframes scrollDot {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.5; }
+}
+
+/* Spin */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin 3s linear infinite; }
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.5s ease-out; }
+
+/* Subtle card border on hover */
+.card-premium {
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-premium:hover {
+  border-color: rgba(220, 20, 60, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+/* =============================================
+   CSS scroll-reveal animations (InView component)
+   All keyframe animations run on the compositor
+   thread — zero JS during scroll.
+   ============================================= */
+.iv-fade-up,
+.iv-fade-in,
+.iv-fade-left,
+.iv-fade-right {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.iv-fade-up    { transform: translateY(18px); }
+.iv-fade-in    {}
+.iv-fade-left  { transform: translateX(-18px); }
+.iv-fade-right { transform: translateX(18px); }
+
+.iv-fade-up.iv-visible    { animation: ivFadeUp   0.5s ease-out forwards; }
+.iv-fade-in.iv-visible    { animation: ivFadeIn   0.45s ease-out forwards; }
+.iv-fade-left.iv-visible  { animation: ivFadeLeft 0.5s ease-out forwards; }
+.iv-fade-right.iv-visible { animation: ivFadeRight 0.5s ease-out forwards; }
+
+@keyframes ivFadeUp    { to { opacity: 1; transform: translateY(0); } }
+@keyframes ivFadeIn    { to { opacity: 1; } }
+@keyframes ivFadeLeft  { to { opacity: 1; transform: translateX(0); } }
+@keyframes ivFadeRight { to { opacity: 1; transform: translateX(0); } }
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .iv-fade-up, .iv-fade-in, .iv-fade-left, .iv-fade-right {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* =============================================
+   Infinite marquee gallery
+   ============================================= */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.marquee-track--left  { animation: marquee-left  40s linear infinite; }
+.marquee-track--right { animation: marquee-right 50s linear infinite; }
+
+/* speed overrides */
+.marquee-track--left.speed-36  { animation-duration: 36s; }
+.marquee-track--left.speed-38  { animation-duration: 38s; }
+.marquee-track--left.speed-44  { animation-duration: 44s; }
+.marquee-track--right.speed-44 { animation-duration: 44s; }
+.marquee-track--right.speed-50 { animation-duration: 50s; }
+
+.marquee-row:hover .marquee-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; }
+}
+
+/* Header scroll state — toggled via direct DOM class (no React re-render) */
+header.site-header {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+header.site-header.is-scrolled {
+  box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+  border-bottom-color: rgba(0,0,0,0.08);
 }
