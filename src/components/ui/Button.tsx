@@ -14,17 +14,17 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    'font-semibold rounded tracking-wide inline-flex items-center justify-center transition-all duration-250 active:scale-[0.97]';
+    'font-semibold rounded-lg tracking-wide inline-flex items-center justify-center transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2';
 
   const variants = {
     primary:
-      'bg-gold text-white hover:bg-gold-dark hover:shadow-red focus-visible:ring-2 focus-visible:ring-gold',
+      'bg-gold text-white hover:bg-gold-dark hover:-translate-y-px hover:shadow-[0_6px_24px_rgba(220,20,60,0.35)]',
     secondary:
-      'bg-charcoal text-white hover:bg-charcoal-soft hover:shadow-lg',
+      'bg-charcoal text-white hover:bg-charcoal-soft hover:-translate-y-px hover:shadow-lg',
     outline:
-      'border border-gold text-gold hover:bg-gold hover:text-white',
+      'border-2 border-gold text-gold hover:bg-gold hover:text-white hover:-translate-y-px hover:shadow-[0_6px_24px_rgba(220,20,60,0.25)]',
     ghost:
-      'text-charcoal hover:bg-gray-100',
+      'text-charcoal hover:bg-gray-100 hover:-translate-y-px',
   };
 
   const sizes = {

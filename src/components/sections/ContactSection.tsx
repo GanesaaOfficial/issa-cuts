@@ -78,7 +78,7 @@ export function ContactSection() {
               href={`https://www.google.com/maps/search/?api=1&query=${contactInfo.coordinates.lat},${contactInfo.coordinates.lng}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative z-10 flex items-center gap-2 text-xs text-gold border border-gold/40 px-4 py-2 rounded-full hover:bg-gold hover:text-white transition-[background-color,color] duration-300"
+              className="relative z-10 flex items-center gap-2 text-xs text-gold border border-gold/50 px-4 py-2 rounded-full hover:bg-gold hover:text-white hover:border-gold hover:-translate-y-px hover:shadow-[0_4px_16px_rgba(220,20,60,0.3)] transition-all duration-200 active:scale-[0.97]"
             >
               Open in Google Maps
               <ArrowRight size={11} />

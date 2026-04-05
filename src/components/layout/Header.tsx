@@ -89,7 +89,7 @@ export function Header() {
             <div className="hidden lg:block">
               <Link
                 href="/booking"
-                className="inline-flex items-center px-6 py-2.5 bg-gold text-white text-sm font-semibold tracking-wide rounded hover:bg-gold-dark transition-[background-color,box-shadow] duration-250"
+                className="inline-flex items-center px-6 py-2.5 bg-gold text-white text-sm font-semibold tracking-wide rounded-lg hover:bg-gold-dark hover:-translate-y-px hover:shadow-[0_6px_24px_rgba(220,20,60,0.35)] transition-all duration-200 active:scale-[0.97]"
               >
                 Book Now
               </Link>
@@ -128,7 +128,7 @@ export function Header() {
                   </Link>
                 ))}
                 <Link href="/booking" onClick={() => setMobileMenuOpen(false)}>
-                  <button className="w-full py-3 bg-gold text-white font-semibold rounded text-sm tracking-wide hover:bg-gold-dark transition-colors">
+                  <button className="w-full py-3 bg-gold text-white font-semibold rounded-lg text-sm tracking-wide hover:bg-gold-dark hover:shadow-[0_6px_24px_rgba(220,20,60,0.35)] transition-all duration-200 active:scale-[0.97]">
                     Book Appointment
                   </button>
                 </Link>

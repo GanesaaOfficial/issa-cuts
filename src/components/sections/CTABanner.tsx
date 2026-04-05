@@ -41,14 +41,14 @@ export function CTABanner() {
           {/* Right: CTAs */}
           <InView variant="fade-right" delay={0.1} className="lg:col-span-6 flex flex-col sm:flex-row gap-3">
             <Link href="/booking" className="group flex-1">
-              <button className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gold text-white text-sm font-semibold tracking-wide rounded hover:bg-gold-dark transition-[background-color] duration-250">
+              <button className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gold text-white text-sm font-semibold tracking-wide rounded-lg hover:bg-gold-dark hover:-translate-y-px hover:shadow-[0_8px_28px_rgba(220,20,60,0.4)] transition-all duration-200 active:scale-[0.97]">
                 <Calendar size={16} />
                 Book Online
                 <ArrowRight size={14} className="ml-auto group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
             <a href={`tel:${contactInfo.phone}`} className="flex-1">
-              <button className="w-full flex items-center justify-center gap-3 px-6 py-4 border border-white/15 text-white text-sm font-medium tracking-wide rounded hover:border-white/35 hover:bg-white/5 transition-[border-color,background-color] duration-300">
+              <button className="w-full flex items-center justify-center gap-3 px-6 py-4 border border-white/20 text-white text-sm font-medium tracking-wide rounded-lg hover:border-white/40 hover:bg-white/8 hover:-translate-y-px transition-all duration-200 active:scale-[0.97]">
                 <Phone size={16} />
                 {contactInfo.phone}
               </button>
@@ -59,7 +59,7 @@ export function CTABanner() {
               rel="noopener noreferrer"
               className="flex-1"
             >
-              <button className="w-full flex items-center justify-center gap-3 px-6 py-4 border border-white/15 text-white text-sm font-medium tracking-wide rounded hover:border-white/35 hover:bg-white/5 transition-[border-color,background-color] duration-300">
+              <button className="w-full flex items-center justify-center gap-3 px-6 py-4 border border-white/20 text-white text-sm font-medium tracking-wide rounded-lg hover:border-white/40 hover:bg-white/8 hover:-translate-y-px transition-all duration-200 active:scale-[0.97]">
                 <MessageCircle size={16} />
                 WhatsApp
               </button>

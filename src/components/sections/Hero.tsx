@@ -144,7 +144,7 @@ export function Hero() {
               <FadeUp delay={DELAY.cta} className="flex flex-wrap gap-3">
                 <Link
                   href="/booking"
-                  className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-gold text-white text-sm font-semibold tracking-wide rounded-sm hover:bg-gold-dark transition-all duration-250 shadow-[0_0_0_1px_rgba(220,20,60,0.4)]"
+                  className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-gold text-white text-sm font-semibold tracking-wide rounded-lg hover:bg-gold-dark hover:-translate-y-px hover:shadow-[0_8px_28px_rgba(220,20,60,0.4)] transition-all duration-200 active:scale-[0.97]"
                 >
                   Book Appointment
                   <ArrowRight
@@ -154,7 +154,7 @@ export function Hero() {
                 </Link>
                 <Link
                   href="/services"
-                  className="inline-flex items-center px-7 py-3.5 border border-white/12 text-white/80 text-sm font-medium tracking-wide rounded-sm hover:border-white/30 hover:text-white hover:bg-white/4 transition-all duration-250"
+                  className="inline-flex items-center px-7 py-3.5 border border-white/20 text-white/80 text-sm font-medium tracking-wide rounded-lg hover:border-white/40 hover:text-white hover:bg-white/8 hover:-translate-y-px transition-all duration-200 active:scale-[0.97]"
                 >
                   View Services
                 </Link>

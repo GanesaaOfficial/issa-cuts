@@ -36,11 +36,11 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-4">
             <Image
-              src="/images/Logo/Logo Dark.webp"
+              src="/images/Logo/logo-cropped.png"
               alt="Issa Cuts"
-              width={130}
-              height={52}
-              className="h-10 w-auto object-contain mb-5"
+              width={193}
+              height={91}
+              className="h-12 w-auto object-contain mb-5 brightness-0 invert"
             />
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
               Premium barbershop in SS15, Subang Jaya. Where precision meets tradition.
